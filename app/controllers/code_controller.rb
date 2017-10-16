@@ -5,7 +5,7 @@ class CodeController < ApplicationController
   end
   def post_ruby
     require 'sicuro'
-    @code = params[:code]
+    @code = params[:step][:code]
     @codeResult = Sicuro.eval(@code)
     render json:  CGI::escapeHTML(@codeResult.stdout.to_s).gsub(/(?:\n\r?|\r\n?)/, '<br>')
   end
